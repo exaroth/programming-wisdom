@@ -818,7 +818,6 @@ do
 
             if [ $PAGE -lt $TOTAL_PAGES ]; then
                 SWITCH_QUOTE=$(($SWITCH_QUOTE & 0))
-				text=$(echo $text | sed -e "s/[.]$//g")
                 if [ ${text: -1} = "." ] || [ ${text: -1} = "," ]; then
                     output_text "$text" $PAGE $TOTAL_PAGES
                 else
