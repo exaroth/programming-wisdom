@@ -19,6 +19,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
 # SOFTWARE.
 
+VERSION="0.1.0"
+
 read -d '' quotes << EOF
 640K ought to be enough for anybody.|Bill Gates, 1981
 A beautiful program is like a beautiful theorem: It does the job elegantly.|Butler Lampson
@@ -661,7 +663,7 @@ ELLIPSIS="..."
 AUTHOR_DASH=" - "
 
 if [ -z ${SNIPPET_INTERVAL+x} ]; then
-    export SNIPPET_INTERVAL=$((60))
+    export SNIPPET_INTERVAL=$((10 * 60))
 fi
 
 if [ -z ${SNIPPET_DELAY+x} ]; then
