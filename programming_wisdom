@@ -638,6 +638,7 @@ When you feel the need to write a comment, first try to refactor the code so tha
 When you find you have to add a feature to a program, and the program's code is not structured in a convenient way to add the feature, first refactor the program to make it easy to add the feature, then add the feature.|Kent Beck
 While much attention has been focused on high-level software architectural patterns, what is, in effect, the de-facto standard software architecture is seldom discussed: the Big Ball of Mud.|Joseph Yoder (computer scientist)
 Why do we never have time to do it right, but always have time to do it over?
+With artificial intelligence we are summoning the demon.|Elon Musk
 Within a computer, natural language is unnatural.|Alan Perlis
 Within C++, there is a much smaller and cleaner language struggling to get out.|Bjarne Stroustrup
 With testing, I know straight away when I added a bug. That lets me fix the bug immediately, before it can crawl off and hide.|Martin Fowler
@@ -714,7 +715,7 @@ get_text_for_page() {
 
         comma_break=$(expr ${word: -1} = "," "&" $word_count ">" 2)
         period_break=$(expr ${word: -1} = "." "&" $word_count ">" 2)
-		if [ $text_l -gt $SNIPPET_WIDTH ] || [ $comma_break -gt 0 ] || [ $period_break -gt 0 ]; then
+		if [ $text_l -gt $SNIPPET_WIDTH ]; then
 			total_pages=$(($total_pages + 1))
 			text="$word"
 			rem=1
@@ -723,6 +724,11 @@ get_text_for_page() {
 			if [ $2 -eq $total_pages ]; then
 				page_text="$text"
 			fi
+            if  [ $comma_break -gt 0 ] || [ $period_break -gt 0 ]; then
+                total_pages=$(($total_pages + 1))
+                word_count=0
+                text=""
+            fi
 		fi
 	done
 	if [ $2 -eq $total_pages ]; then
@@ -813,7 +819,11 @@ do
             if [ $PAGE -lt $TOTAL_PAGES ]; then
                 SWITCH_QUOTE=$(($SWITCH_QUOTE & 0))
 				text=$(echo $text | sed -e "s/[.]$//g")
-                output_text "$text$ELLIPSIS" $PAGE $TOTAL_PAGES
+                if [ ${text: -1} = "." ] || [ ${text: -1} = "," ]; then
+                    output_text "$text" $PAGE $TOTAL_PAGES
+                else
+                    output_text "$text$ELLIPSIS" $PAGE $TOTAL_PAGES
+                fi
             else 
 				if [ $author_exists -eq 0 ] || [ $SNIPPET_SHOW_AUTHOR -eq 0 ]; then
 					temp="$text"
