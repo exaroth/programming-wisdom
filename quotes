@@ -732,6 +732,11 @@ if [ -z ${SNIPPET_SHOW_AUTHOR+x} ]; then
     export SNIPPET_SHOW_AUTHOR=1
 fi
 
+if [ -z ${SNIPPET_OUTPUT_PANGO+x} ]; then
+    export SNIPPET_OUTPUT_PANGO=0
+fi
+
+
 if [ $SNIPPET_WIDTH -lt 30 ]; then
     SNIPPET_WIDTH=30
 fi
@@ -791,7 +796,12 @@ output_text() {
         text_line=$(printf "%s%0*s" "$1" $snippet_length " ");
         text_line=${text_line:0:$snippet_length}
     fi
-    echo "<span font_family='monospace'>${text_line}</span>"
+    if [ $SNIPPET_OUTPUT_PANGO -gt 0 ]; then
+        echo "<span font_family='monospace'>${text_line}</span>"
+    else
+        printf "%s\n" "${text_line}"
+
+    fi
 }
 
 QUOTE=$(get_quote)
