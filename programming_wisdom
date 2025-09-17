@@ -39,7 +39,6 @@ A few months writing code can save you a few hours in design.|Anonymous
 A framework can provide 90% of the features we need quickly - giving us a false sense of confidence early in the development cycle - and then be frustratingly hard when it comes to implementing the last 10%.|Tony Parisi (software developer)
 A good programmer is someone who always looks both ways before crossing a one-way street.|Doug Linder
 A great programmer thinks about the program on a constant basis, whether driving or eating. That method takes an incredible amount of mental energy.|Bill Gates
-AI is a fundamental risk to the existence of human civilization.|Elon Musk
 A language that doesn't affect the way you think about programming, is not worth knowing.|Alan Perlis
 A language that doesn’t have everything is actually easier to program in than some that do.|Dennis Ritchie
 A large part of mathematics which becomes useful developed with absolutely no desire to be useful, and in a situation where nobody could possibly know in what area it would become useful.|John von Neumann
@@ -71,7 +70,6 @@ Any fool can write code that a computer can understand. Good programmers write c
 Any intelligent fool can make things bigger, more complex, and more violent. It takes a touch of genius – and a lot of courage – to move in the opposite direction.|Albert Einstein
 Any one who considers arithmetical methods of producing random digits is, of course, in a state of sin. For, as has been pointed out several times, there is no such thing as a random number.|John von Neumann
 Anyone who has ever written a program knows that telling a computer what you want it to do is not as easy as it sounds. Every detail of the computer’s desired operation must be precisely described. For instance, if you tell an accounting program to bill your clients for the amount that each owes, then the computer will send out a weekly bill for $0.00 to clients who owe nothing.|Danny Hillis
-Any product that needs a manual to work is broken.|Elon Musk
 Any sufficiently advanced technology is indistinguishable from magic.|Arthur C. Clarke
 Any technological or managerial scheme to force documentation can be subverted by unwilling programmers.|Daniel T. Barry
 Any unwillingness to learn mathematics today can greatly restrict your possibilities tomorrow.|Richard Hamming
@@ -295,7 +293,6 @@ I think programming is very much a religious experience for a lot of people.|Gar
 I think the best way to make JavaScript better would be to make it smaller. If we could just get it down to what it does really well and remove the features that add little or no value, it’s actually a better language.|Douglas Crockford
 I think the best way to supervise is by personal example and by frequent code reviews.|Charles Simonyi
 I think there is a world market for maybe fivecomputers.|Thomas J. Watson
-I think you should always bear in mind that entropy is not on your side.|Elon Musk
 It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures.|Alan Perlis
 It is easier to change the specification to fit the program than vice versa.|Alan Perlis
 It is hard to think that a $2 billion company with 4,300-plus people couldn't compete with six people in blue jeans.|Steve Jobs
@@ -391,7 +388,6 @@ Our goals are very simple. We're going to create the software that puts a comput
 Over half of the time you spend working on a project is spent thinking, and no tool, no matter how advanced, can think for you.|Richard P. Gabriel
 Part of what makes programming difficult is most of the time we’re doing stuff we’ve never done before.|Douglas Crockford
 Patterns mean "I have run out of language".|Rich Hickey
-People are mistaken when they think that technology just automatically improves. It does not automatically improve. It only improves if a lot of people work very hard to make it better, and actually it will, I think, by itself degrade, actually.|Elon Musk
 People should be able to speak and breathe programs just like they talk now.|Jaron Lanier
 People think that computer science is the art of geniuses but the actual reality is the opposite, just many people doing things that build on each other, like a wall of mini stones.|Donald Knuth
 People under pressure don’t work better; they just work faster.|Tom DeMarco
@@ -538,7 +534,6 @@ The only difference between a FA [finite automata] and a TM [Turing machine] is 
 The only sin is to make a choice without knowing you are making one.|Jonathan Shewchuk
 The only way for errors to occur in a program is by being put there by the author. No other mechanisms are known.|Harlan Mills
 The only way to learn a new programming language is by writing programs in it.|Dennis Ritchie
-The path to the CEO's office should not be through the CFO's office, and it should not be through the marketing department. It needs to be through engineering and design.|Elon Musk
 The problem is that coding isn’t fun if all you can do is call things out of a library, if you can’t write the library yourself.|Donald Knuth
 The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.|Joe Armstrong (programmer)
 The programmer, like the poet, works only slightly removed from pure thought-stuff. He builds his castles in the air, from air, creating by exertion of the imagination. Few media of creation are so flexible, so easy to polish and rework, so readily capable of realizing grand conceptual structures.|Fred Brooks
@@ -561,7 +556,6 @@ There are some basic techniques to control complexity. Fundamentally, I divide a
 There are two major products that come out of Berkeley: LSD and UNIX. We don't believe this to be a coincidence.|Jeremy S. Anderson
 There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies.|C.A.R. Hoare
 The reason that we think computer science is about computers is pretty much the same reason that the Egyptians thought geometry was about surveying instruments: when some field is just getting started and you don't really understand it very well, it's very easy to confuse the essence of what you're doing with the tools that you use.|Hal Abelson
-There certainly will be job disruption. Because what's going to happen is robots will be able to do everything better than us.|Elon Musk
 There is an amazing commonality in the types of difficulties you run into. In design reviews, I really enjoy being able to provide advice, based on programs that I have done.|Bill Gates
 There is never enough time to do it right, but there is always enough time to fix it or to do it over.|Daniel T. Barry
 There is no programming language, no matter how structured, that will prevent programmers from making bad programs.|Lawrence Flon
@@ -614,7 +608,6 @@ Weeks of programming can save you hours of planning.
 We have already mentioned what may, perhaps, appear paradoxical to some of our readers, - that the division of labour can be applied with equal success to mental as to mechanical operations, and that it ensures in both the same economy of time.|Charles Babbage
 We have seen that computer programming is an art, because it applies accumulated knowledge to the world, because it requires skill and ingenuity, and especially because it produces objects of beauty.|Donald Knuth
 We may say most aptly that the Analytical Engine weaves algebraical patterns just as the Jacquard loom weaves flowers and leaves.|Ada Lovelace
-We need to be super careful with AI. Potentially more dangerous than nukes.|Elon Musk
 We're no longer in the days where everything is super well crafted. But at the heart of the programs that make it to the top, you'll find that the key internal code was done by a few people who really know what they were doing.|Bill Gates
 We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%.|Donald Knuth
 We who cut mere stones must always be envisioning cathedrals.|Quarry worker's creed
@@ -645,7 +638,6 @@ When you feel the need to write a comment, first try to refactor the code so tha
 When you find you have to add a feature to a program, and the program's code is not structured in a convenient way to add the feature, first refactor the program to make it easy to add the feature, then add the feature.|Kent Beck
 While much attention has been focused on high-level software architectural patterns, what is, in effect, the de-facto standard software architecture is seldom discussed: the Big Ball of Mud.|Joseph Yoder (computer scientist)
 Why do we never have time to do it right, but always have time to do it over?
-With artificial intelligence we are summoning the demon.|Elon Musk
 Within a computer, natural language is unnatural.|Alan Perlis
 Within C++, there is a much smaller and cleaner language struggling to get out.|Bjarne Stroustrup
 With testing, I know straight away when I added a bug. That lets me fix the bug immediately, before it can crawl off and hide.|Martin Fowler
@@ -706,6 +698,7 @@ get_text_for_page() {
 	page_text=""
 	text=""
 	rem=0
+    word_count=0
 	total_pages=1
 	IFS=' ' read -r -a words <<< "$1"
 	for word in "${words[@]}"
@@ -716,11 +709,16 @@ get_text_for_page() {
 		else 
 			text="$text $word"
         fi
+        word_count=$(($word_count + 1));
 		text_l=${#text}
-		if [ $text_l -gt $SNIPPET_WIDTH ]; then
+
+        comma_break=$(expr ${word: -1} = "," "&" $word_count ">" 2)
+        period_break=$(expr ${word: -1} = "." "&" $word_count ">" 2)
+		if [ $text_l -gt $SNIPPET_WIDTH ] || [ $comma_break -gt 0 ] || [ $period_break -gt 0 ]; then
 			total_pages=$(($total_pages + 1))
 			text="$word"
 			rem=1
+            word_count=0
 		else 
 			if [ $2 -eq $total_pages ]; then
 				page_text="$text"
