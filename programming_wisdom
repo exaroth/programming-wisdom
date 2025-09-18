@@ -781,9 +781,7 @@ do
     fi
     author_exists=$(echo $QUOTE | grep "|" | wc -l)
     if [ $author_exists -eq 0 ]; then
-        quote_text=$QUOTE
-		quote_text=$(printf "\"%s\"" "$quote_text" )
-		TEXT_FULL="$quote_text"
+		TEXT_FULL=$(printf "\"%s\"" "$QUOTE" )
     else
         quote_text=$(echo $QUOTE | cut -f1 -d '|')
 		quote_text=$(printf "\"%s\"" "$quote_text" )
