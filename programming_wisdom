@@ -700,13 +700,11 @@ get_quote() {
 get_text_for_page() {
 	page_text=""
 	text=""
-	rem=0
     word_count=0
 	total_pages=1
 	IFS=' ' read -r -a words <<< "$1"
 	for word in "${words[@]}"
 	do
-		rem=0
         if [[ "$text" = "" ]]; then
 			text="$word"
 		else 
@@ -720,7 +718,6 @@ get_text_for_page() {
 		if [ $text_l -gt $SNIPPET_WIDTH ]; then
 			total_pages=$(($total_pages + 1))
 			text="$word"
-			rem=1
             word_count=0
 		else 
 			if [ $2 -eq $total_pages ]; then
