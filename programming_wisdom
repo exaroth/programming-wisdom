@@ -715,7 +715,8 @@ get_text_for_page() {
 
         comma_break=$(expr ${word: -1} = "," "&" $word_count ">" 2)
         period_break=$(expr ${word: -1} = "." "&" $word_count ">" 2)
-		if [ $text_l -gt $SNIPPET_WIDTH ]; then
+		short_break=$(expr ${#word} "<" 3 "&" $word_count ">" 5)
+		if [ $text_l -gt $SNIPPET_WIDTH ] || [ $short_break -gt 0 ] ; then
 			total_pages=$(($total_pages + 1))
 			text="$word"
             word_count=0
