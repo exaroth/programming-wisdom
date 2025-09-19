@@ -19,6 +19,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
 # SOFTWARE.
 
+#shellcheck disable=SC2162
+
 VERSION="0.1.0"
 
 read -d '' quotes << EOF
@@ -687,14 +689,14 @@ if [ -z ${SNIPPET_OUTPUT_PANGO+x} ]; then
 fi
 
 
-if [ $SNIPPET_WIDTH -lt 30 ]; then
+if [ "$SNIPPET_WIDTH" -lt 30 ]; then
     SNIPPET_WIDTH=30
 fi
 
 get_quote() {
     line_num=$(echo "$quotes" | wc -l)
-    line_no=$(shuf -i 1-$line_num -n 1)
-    echo "$quotes" | head -n $line_no | tail -1
+    line_no=$(shuf -i 1-"$line_num" -n 1)
+    echo "$quotes" | head -n "$line_no" | tail -1
 }
 
 get_text_for_page() {
@@ -710,52 +712,52 @@ get_text_for_page() {
 		else 
 			text="$text $word"
         fi
-        word_count=$(($word_count + 1));
+        word_count=$(("$word_count" + 1));
 		text_l=${#text}
 
-        comma_break=$(expr ${word: -1} = "," "&" $word_count ">" 2)
-        period_break=$(expr ${word: -1} = "." "&" $word_count ">" 2)
+        comma_break=$(expr "${word: -1}" = "," "&" $word_count ">" 2)
+        period_break=$(expr "${word: -1}" = "." "&" $word_count ">" 2)
 		short_break=$(expr ${#word} "<" 3 "&" $word_count ">" 5)
-		if [ $text_l -gt $SNIPPET_WIDTH ] || [ $short_break -gt 0 ] ; then
-			total_pages=$(($total_pages + 1))
+		if [ "$text_l" -gt "$SNIPPET_WIDTH" ] || [ "$short_break" -gt 0 ] ; then
+			total_pages=$(("$total_pages" + 1))
 			text="$word"
             word_count=0
 		else 
-			if [ $2 -eq $total_pages ]; then
+			if [ "$2" -eq $total_pages ]; then
 				page_text="$text"
 			fi
-            if  [ $comma_break -gt 0 ] || [ $period_break -gt 0 ]; then
-                total_pages=$(($total_pages + 1))
+            if  [ "$comma_break" -gt 0 ] || [ "$period_break" -gt 0 ]; then
+                total_pages=$(("$total_pages" + 1))
                 word_count=0
                 text=""
             fi
 		fi
 	done
-	if [ $2 -eq $total_pages ]; then
+	if [ "$2" -eq "$total_pages" ]; then
 		page_text=$text
 	fi
 	echo "$page_text|$total_pages"
 }
 
 output_text() {
-    snippet_length=$(($SNIPPET_WIDTH + ${#ELLIPSIS} + 2))
+    snippet_length=$(("$SNIPPET_WIDTH" + ${#ELLIPSIS} + 2))
     if [ "$SNIPPET_ALIGN" = "right" ]; then
-        text_line=$(echo $1 | rev)
+        text_line=$(echo "$1" | rev)
         text_line=$(printf "%s%0*s" "$text_line" $snippet_length " ");
         text_line=${text_line:0:$snippet_length}
         text_line=$(printf "%s" "$text_line" | rev)
     elif [ "$SNIPPET_ALIGN" = "center" ]; then
-        pad_base=$(($snippet_length - ${#1}))
-        pad=$(($pad_base / 2))
-        rem=$(($pad % 2))
-        lpad=$(($pad + $rem))
+        pad_base=$(("$snippet_length" - ${#1}))
+        pad=$(("$pad_base" / 2))
+        rem=$(("$pad" % 2))
+        lpad=$(("$pad" + "$rem"))
         text_line=$(printf "%0*s%s%0*s" $lpad " " "$1" $snippet_length " ")
         text_line=${text_line:0:$snippet_length}
     else
         text_line=$(printf "%s%0*s" "$1" $snippet_length " ");
         text_line=${text_line:0:$snippet_length}
     fi
-    if [ $SNIPPET_OUTPUT_PANGO -gt 0 ]; then
+    if [ "$SNIPPET_OUTPUT_PANGO" -gt 0 ]; then
         echo "<span font_family='monospace'>${text_line}</span>"
     else
         printf "%s\n" "${text_line}"
@@ -774,17 +776,17 @@ while true :
 do
     NOW=$(date +%s)
     SWITCH_QUOTE=0
-    if [[ $(($NOW - $INS)) -gt "${SNIPPET_INTERVAL}" ]]; then
+    if [[ $(("$NOW" - "$INS")) -gt "${SNIPPET_INTERVAL}" ]]; then
 		SWITCH_QUOTE=1
     fi
-    author_exists=$(echo $QUOTE | grep "|" | wc -l)
-    if [ $author_exists -eq 0 ]; then
+    author_exists=$(echo "$QUOTE" | grep -c "|")
+    if [ "$author_exists" -eq 0 ]; then
 		TEXT_FULL=$(printf "\"%s\"" "$QUOTE" )
     else
-        quote_text=$(echo $QUOTE | cut -f1 -d '|')
+        quote_text=$(echo "$QUOTE" | cut -f1 -d '|')
 		quote_text=$(printf "\"%s\"" "$quote_text" )
-        quote_author=$(echo $QUOTE | cut -f2 -d '|')
-        if [ $SNIPPET_SHOW_AUTHOR -gt 0 ]; then
+        quote_author=$(echo "$QUOTE" | cut -f2 -d '|')
+        if [ "$SNIPPET_SHOW_AUTHOR" -gt 0 ]; then
             TEXT_FULL="$quote_text$AUTHOR_DASH$quote_author"
         else
             TEXT_FULL="$quote_text"
@@ -793,52 +795,52 @@ do
 
     
     TEXT_LENGTH=${#TEXT_FULL}
-    PAGE=$(($PAGE + 1))
+    PAGE=$(("$PAGE" + 1))
     
 	if [ $OUTPUT_AUTHOR -eq 1 ]; then 
-        if [ $author_exists -gt 0 ]; then
+        if [ "$author_exists" -gt 0 ]; then
             output_text "$AUTHOR_DASH$quote_author" $PAGE $TOTAL_PAGES
         fi
-        SWITCH_QUOTE=$(($SWITCH_QUOTE & 1))
+        SWITCH_QUOTE=$(("$SWITCH_QUOTE" & 1))
 		PAGE=0
         OUTPUT_AUTHOR=0
     else 
         if [[ "$TEXT_LENGTH" -lt "$SNIPPET_WIDTH" ]]; then
             TOTAL_PAGES=1
             PAGE=1
-            SWITCH_QUOTE=$(($SWITCH_QUOTE & 1))
+            SWITCH_QUOTE=$(("$SWITCH_QUOTE" & 1))
             output_text "$TEXT_FULL" $PAGE $TOTAL_PAGES
         else
             TEMP=$(get_text_for_page "$quote_text" $PAGE)
-            text=$(echo $TEMP | cut -f1 -d '|')
-            total_pages_s=$(echo $TEMP | cut -f2 -d '|')
-            TOTAL_PAGES=$(($total_pages_s))
+            text=$(echo "$TEMP" | cut -f1 -d '|')
+            total_pages_s=$(echo "$TEMP" | cut -f2 -d '|')
+            TOTAL_PAGES=$(("$total_pages_s"))
 
             if [ $PAGE -lt $TOTAL_PAGES ]; then
-                SWITCH_QUOTE=$(($SWITCH_QUOTE & 0))
-                if [ ${text: -1} = "." ] || [ ${text: -1} = "," ]; then
+                SWITCH_QUOTE=$(("$SWITCH_QUOTE" & 0))
+                if [ "${text: -1}" = "." ] || [ "${text: -1}" = "," ]; then
                     output_text "$text" $PAGE $TOTAL_PAGES
                 else
                     output_text "$text$ELLIPSIS" $PAGE $TOTAL_PAGES
                 fi
             else 
-				if [ $author_exists -eq 0 ] || [ $SNIPPET_SHOW_AUTHOR -eq 0 ]; then
+				if [ "$author_exists" -eq 0 ] || [ "$SNIPPET_SHOW_AUTHOR" -eq 0 ]; then
 					temp="$text"
 				else
 					temp="$text$AUTHOR_DASH$quote_author"
 				fi
                 t_l=${#temp}
-                if [ $t_l -lt $SNIPPET_WIDTH ]; then
-                    SWITCH_QUOTE=$(($SWITCH_QUOTE & 1))
+                if [ "$t_l" -lt "$SNIPPET_WIDTH" ]; then
+                    SWITCH_QUOTE=$(("$SWITCH_QUOTE" & 1))
                     output_text "$temp" $PAGE $TOTAL_PAGES
                     PAGE=0
                 else
                     output_text "$text" $PAGE $TOTAL_PAGES
-                    if [ $SNIPPET_SHOW_AUTHOR -gt 0 ]; then
-                        SWITCH_QUOTE=$(($SWITCH_QUOTE & 0))
+                    if [ "$SNIPPET_SHOW_AUTHOR" -gt 0 ]; then
+                        SWITCH_QUOTE=$(("$SWITCH_QUOTE" & 0))
                         OUTPUT_AUTHOR=1
                     else
-                        SWITCH_QUOTE=$(($SWITCH_QUOTE & 1))
+                        SWITCH_QUOTE=$(("$SWITCH_QUOTE" & 1))
                         PAGE=0
                     fi
                 fi
@@ -851,7 +853,7 @@ do
         PAGE=0
         SWITCH_QUOTE=0
     fi
-    sleep $SNIPPET_DELAY
+    sleep "$SNIPPET_DELAY"
 
 done
 
